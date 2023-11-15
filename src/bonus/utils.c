@@ -1,7 +1,6 @@
-#include "../include/fdf.h"
+#include "../../include/fdf.h"
 
-
-void put_alpha(u_int32_t *decimal)
+void put_alpha(uint32_t *decimal)
 {   
     *decimal = *decimal << 8 | 0x000000FF;
 }
@@ -31,12 +30,34 @@ uint32_t ft_hex_to_dec(char *str)
     put_alpha(&decimal);
     return (decimal);
 }
-/* int main(void)
-{
-    int result;
-    char *str = "1E6"; //486
-    // char *str = "2E5C8D0"; //48613584
 
-    result = ft_hex_to_dec(str);
-    printf("result %d\n", result);
-} */
+void	error(char *err)
+{
+	printf("%s\n", err);
+	exit (1);
+}
+
+void	free_matrix(void **matrix)
+{
+	int	i;
+	i = 0;
+	while (matrix[i] != NULL)
+	{
+		free(matrix[i]);
+		i++;
+	}
+	free(matrix);
+}
+
+int check_fd(char *map_name)
+{
+	int fd;
+
+	fd = open(map_name, O_RDONLY);
+	if (fd < 0)
+	{
+		error("invalid file.");
+		return (-1);
+	}
+	return (fd);
+}

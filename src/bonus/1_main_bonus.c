@@ -1,4 +1,4 @@
-#include "../include/fdf.h"
+#include "../../include/fdf.h"
 
 int32_t	main(int32_t argc, char *argv[])
 {
@@ -20,7 +20,6 @@ int32_t	main(int32_t argc, char *argv[])
 	randomize(map);
 	if (init_window(mlx, mlx_image) == -1)
 		error("mlx window init failed.");
-	// mlx_loop_hook(mlx, ft_hook_translate, map);
 	mlx_loop_hook(mlx, ft_hook, map);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);

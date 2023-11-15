@@ -1,4 +1,4 @@
-#include "../include/fdf.h"
+#include "../../include/fdf.h"
 
 void	check_args(int argc, char *map_name)
 {
