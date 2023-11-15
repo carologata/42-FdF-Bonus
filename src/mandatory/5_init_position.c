@@ -1,4 +1,4 @@
-#include "../include/fdf.h"
+#include "../../include/fdf.h"
 
 void	find_initial_scale(t_map *map)
 {
@@ -11,10 +11,8 @@ void	find_initial_scale(t_map *map)
 	map->position.scale = h_scale;
 	if (h_scale > w_scale)
 		map->position.scale = w_scale;
-	printf("initial scale: %f\n", map->position.scale);
 	if (map->position.scale > 10)
 		map->position.scale *= 0.8;
-	printf("scale: %f\n", map->position.scale);
 }
 void	centralize(t_map *map)
 {
@@ -58,7 +56,6 @@ void	find_z_factor(t_map *map)
 		}
 		h++;
 	}
-	map->position.z_factor = 1;
 	if (max_z - min_z > (int) map->height)
 		map->position.z_factor = 0.1;
 	else if (max_z - min_z == (int) map->height)
@@ -69,6 +66,7 @@ void	init_position(t_map *map)
 {
 	centralize(map);
 	find_initial_scale(map);
+	map->position.z_factor = 1;
 	find_z_factor(map);
 	map->position.x_offset = WIDTH / 2;
 	map->position.y_offset = HEIGHT / 2;
