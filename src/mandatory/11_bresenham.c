@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   10_bresenham.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cogata <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/16 13:58:02 by cogata            #+#    #+#             */
+/*   Updated: 2023/11/16 13:58:03 by cogata           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/fdf.h"
 
 void	put_valid_pixel(t_map *map, int x, int y, uint32_t color)
@@ -70,7 +82,7 @@ void	slope_bigger_equal_1(t_bres *aux, t_coordinate *point, t_map *map)
 
 void	bresenham(t_coordinate *point_1, t_coordinate *point_2, t_map *map)
 {
-	t_bres aux;
+	t_bres	aux;
 
 	aux.dx = point_2->x - point_1->x;
 	aux.dy = point_2->y - point_1->y;

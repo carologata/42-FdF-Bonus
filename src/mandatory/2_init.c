@@ -1,21 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   2_init.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cogata <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/16 13:57:11 by cogata            #+#    #+#             */
+/*   Updated: 2023/11/16 13:57:13 by cogata           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/fdf.h"
 
 void	check_args(int argc, char *map_name)
 {
+	int		fd;
 	char	*extension;
 
 	if (argc != 2)
-		error("number of args is invalid.");
+		error("ERROR: number of args is invalid.");
 	extension = ft_strrchr(map_name, '.');
-	if (ft_strncmp(extension, ".fdf", 4) != 0)
-		error("argument extension is invalid.");
+	fd = open(map_name, O_RDONLY);
+	if (fd < 0)
+	{
+		close(fd);
+		error("ERROR: file is invalid.");
+	}
 }
 
 mlx_t	*init_mlx(void)
 {
 	mlx_t	*mlx;
 
-	if (!(mlx = mlx_init(WIDTH, HEIGHT, "FdF", false)))
+	mlx = mlx_init(WIDTH, HEIGHT, "FdF", false);
+	if (!mlx)
 	{
 		puts(mlx_strerror(mlx_errno));
 		return (NULL);
@@ -27,7 +45,8 @@ mlx_image_t	*init_image(mlx_t *mlx)
 {
 	mlx_image_t	*mlx_image;
 
-	if (!(mlx_image = mlx_new_image(mlx, WIDTH, HEIGHT)))
+	mlx_image = mlx_new_image(mlx, WIDTH, HEIGHT);
+	if (!mlx_image)
 	{
 		mlx_close_window(mlx);
 		puts(mlx_strerror(mlx_errno));
