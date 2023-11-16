@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   8_rotation.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cogata <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/16 13:57:52 by cogata            #+#    #+#             */
+/*   Updated: 2023/11/16 13:57:54 by cogata           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/fdf.h"
 
 void	rotation_in_x(t_coordinate *point_1, t_coordinate *point_2, t_map *map)
@@ -65,7 +77,7 @@ void	oblique(t_coordinate *point_1, t_coordinate *point_2, t_map *map)
 	t_coordinate	aux_point_2;
 
 	pi = M_PI;
-	angle = map->position.isometric_angle * pi / 180;
+	angle = map->position.oblique_angle * pi / 180;
 	aux_point_1.x = point_1->x;
 	aux_point_1.y = point_1->y;
 	aux_point_2.x = point_2->x;

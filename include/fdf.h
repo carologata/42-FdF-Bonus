@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cogata <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/16 14:54:03 by cogata            #+#    #+#             */
+/*   Updated: 2023/11/16 14:54:05 by cogata           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FDF_H
 # define FDF_H
 
@@ -32,7 +44,7 @@ typedef struct s_position
 	double		x_angle;
 	double		y_angle;
 	double		z_angle;
-	double		isometric_angle;
+	double		oblique_angle;
 }				t_position;
 
 typedef struct s_map
@@ -62,39 +74,27 @@ typedef struct s_bres
 	int			p;
 }				t_bres;
 
-//init MLX42 and check args
 void			check_args(int argc, char *map_name);
 mlx_t			*init_mlx(void);
 mlx_image_t		*init_image(mlx_t *mlx);
 int				init_window(mlx_t *mlx, mlx_image_t *mlx_image);
-
-//init map
-t_map			*init_map(char *map_name);
+void			init_each_line(int fd, uint32_t h, uint32_t width, t_map *map);
 t_map			*initialize_matrix(char *map_name, uint32_t width,
 					uint32_t height);
-void			init_each_line(int fd, uint32_t h, uint32_t width, t_map *map);
+t_map			*init_map(char *map_name);
 void			find_width(char *map_name, uint32_t *width);
 void			find_height(char *map_name, uint32_t *height);
-void			check_width_vs_count(int width, int count);
-void			check_map(char *map_name, uint32_t width, uint32_t height);
 uint32_t		get_color(char *split_line);
-
-//init position
+void			check_width_vs_count(int width, int count);
+void			check_each_line(int fd, uint32_t width, uint32_t height);
+void			check_map(char *map_name, uint32_t width, uint32_t height);
 void			find_initial_scale(t_map *map);
 void			centralize(t_map *map);
 void			find_z_factor(t_map *map);
 void			init_position(t_map *map);
-
-//transformations and randomize
-void			put_valid_pixel(t_map *map, int x, int y, uint32_t color);
-void			bresenham(t_coordinate *point_1, t_coordinate *point_2,
-					t_map *map);
-void			slope_lower_1(t_bres *aux, t_coordinate *point, t_map *map);
-void			slope_bigger_equal_1(t_bres *aux, t_coordinate *point,
-					t_map *map);
-void			init_points(int x1, int y1, char type, t_map *map);
 void			transform(t_coordinate *point_1, t_coordinate *point_2,
 					t_map *map);
+void			init_points(int x1, int y1, char type, t_map *map);
 void			randomize(t_map *map);
 void			scale(t_coordinate *point_1, t_coordinate *point_2, t_map *map);
 void			rotation_in_x(t_coordinate *point_1, t_coordinate *point_2,
@@ -107,15 +107,18 @@ void			oblique(t_coordinate *point_1, t_coordinate *point_2,
 					t_map *map);
 void			translate(t_coordinate *point_1, t_coordinate *point_2,
 					t_map *map);
-
-//utils
+void			put_valid_pixel(t_map *map, int x, int y, uint32_t color);
+void			check_delta_to_move_variable(int d, int *variable);
+void			slope_lower_1(t_bres *aux, t_coordinate *point, t_map *map);
+void			slope_bigger_equal_1(t_bres *aux, t_coordinate *point,
+					t_map *map);
+void			bresenham(t_coordinate *point_1, t_coordinate *point_2,
+					t_map *map);
+void			ft_hook(void *param);
+uint32_t		put_alpha(uint32_t decimal);
 void			error(char *err);
 void			free_matrix(void **matrix);
 int				check_fd(char *map_name);
-void			put_alpha(uint32_t *decimal);
-uint32_t		ft_hex_to_dec(char *str);
-
-//bonus
-void			ft_hook(void *param);
+void			free_and_message(t_map *map, char *str);
 
 #endif

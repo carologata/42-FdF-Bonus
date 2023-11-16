@@ -7,8 +7,8 @@ LIBFT	:= ./lib/libft
 HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT)
 LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm $(LIBFT)/libft.a
 SRCS	:= $(addprefix ./src/mandatory/, 1_main.c 2_init.c 3_init_map.c \
-		4_init_map_utils.c 5_init_position.c 6_randomize.c 7_scale.c 8_rotation.c \
-		9_translation.c 10_bresenham.c 11_hooks.c 12_utils.c)
+		4_init_map_utils.c 5_check_map.c 6_init_position.c 7_randomize.c 8_scale.c 9_rotation.c \
+		10_translation.c 11_bresenham.c 12_hooks.c 13_utils.c)
 OBJS	:= ${SRCS:.c=.o}
 
 all: libmlx libft $(NAME)
@@ -37,6 +37,6 @@ fclean: clean
 re: clean all
 
 norm:
-	norminette -R CheckForbiddenSourceHeader $(SRC) $(BONUS_SRC) libft.h
+	norminette -R CheckForbiddenSourceHeader $(SRC) 
 
 .PHONY: all, clean, fclean, re, libmlx, libft

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   5_init_position.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cogata <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/16 13:57:28 by cogata            #+#    #+#             */
+/*   Updated: 2023/11/16 13:57:37 by cogata           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/fdf.h"
 
 void	find_initial_scale(t_map *map)
@@ -14,6 +26,7 @@ void	find_initial_scale(t_map *map)
 	if (map->position.scale > 10)
 		map->position.scale *= 0.8;
 }
+
 void	centralize(t_map *map)
 {
 	uint32_t	w;
@@ -46,7 +59,7 @@ void	find_z_factor(t_map *map)
 	while (h < map->height)
 	{
 		w = 0;
-		while (w++ < map->width)
+		while (w < map->width)
 		{
 			if (map->matrix[h][w].z > max_z)
 				max_z = map->matrix[h][w].z;
@@ -56,9 +69,9 @@ void	find_z_factor(t_map *map)
 		}
 		h++;
 	}
-	if (max_z - min_z > (int) map->height)
+	if (max_z - min_z > (int)map->height)
 		map->position.z_factor = 0.1;
-	else if (max_z - min_z == (int) map->height)
+	else if (max_z - min_z == (int)map->height)
 		map->position.z_factor = 0.5;
 }
 
@@ -73,5 +86,5 @@ void	init_position(t_map *map)
 	map->position.z_angle = -45;
 	map->position.x_angle = 54;
 	map->position.y_angle = 0;
-	map->position.isometric_angle = 0;
+	map->position.oblique_angle = 0;
 }

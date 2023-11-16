@@ -1,9 +1,0 @@
-#include "../../include/fdf.h"
-
-void	translate(t_coordinate *point_1, t_coordinate *point_2, t_map *map)
-{
-	point_1->x += map->position.x_offset;
-	point_1->y += map->position.y_offset;
-	point_2->y += map->position.y_offset;
-	point_2->x += map->position.x_offset;
-}
