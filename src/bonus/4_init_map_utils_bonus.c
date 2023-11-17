@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/fdf.h"
+#include "../../include/fdf_bonus.h"
 
 void	find_width(char *map_name, uint32_t *width)
 {

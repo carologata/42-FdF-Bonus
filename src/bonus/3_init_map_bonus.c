@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/fdf.h"
+#include "../../include/fdf_bonus.h"
 
 void	init_each_line(int fd, uint32_t h, uint32_t width, t_map *map)
 {

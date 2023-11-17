@@ -10,21 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/fdf.h"
+#include "../../include/fdf_bonus.h"
 
 void	find_initial_scale(t_map *map)
 {
-	double	w_scale;
-	double	h_scale;
+	float	w_scale;
+	float	h_scale;
 
 	map->position.scale = 1;
-	w_scale = (double)WIDTH / map->width;
-	h_scale = (double)HEIGHT / map->height;
+	w_scale = (float)WIDTH / map->width;
+	h_scale = (float)HEIGHT / map->height;
 	map->position.scale = h_scale;
 	if (h_scale > w_scale)
 		map->position.scale = w_scale;
 	if (map->position.scale > 10)
 		map->position.scale *= 0.8;
+	map->position.initial_scale = map->position.scale;
 }
 
 void	centralize(t_map *map)
@@ -73,6 +74,7 @@ void	find_z_factor(t_map *map)
 		map->position.z_factor = 0.1;
 	else if (max_z - min_z == (int)map->height)
 		map->position.z_factor = 0.5;
+	
 }
 
 void	init_position(t_map *map)

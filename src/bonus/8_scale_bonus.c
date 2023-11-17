@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/fdf.h"
+#include "../../include/fdf_bonus.h"
 
 void	scale(t_coordinate *point_1, t_coordinate *point_2, t_map *map)
 {

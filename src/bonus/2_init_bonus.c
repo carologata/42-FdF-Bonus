@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/fdf.h"
+#include "../../include/fdf_bonus.h"
 
 void	check_args(int argc, char *map_name)
 {
@@ -34,10 +34,7 @@ mlx_t	*init_mlx(void)
 
 	mlx = mlx_init(WIDTH, HEIGHT, "FdF", false);
 	if (!mlx)
-	{
-		puts(mlx_strerror(mlx_errno));
 		return (NULL);
-	}
 	return (mlx);
 }
 
@@ -49,7 +46,6 @@ mlx_image_t	*init_image(mlx_t *mlx)
 	if (!mlx_image)
 	{
 		mlx_close_window(mlx);
-		puts(mlx_strerror(mlx_errno));
 		return (NULL);
 	}
 	return (mlx_image);
@@ -60,7 +56,6 @@ int	init_window(mlx_t *mlx, mlx_image_t *mlx_image)
 	if (mlx_image_to_window(mlx, mlx_image, 0, 0) == -1)
 	{
 		mlx_close_window(mlx);
-		puts(mlx_strerror(mlx_errno));
 		return (-1);
 	}
 	return (0);

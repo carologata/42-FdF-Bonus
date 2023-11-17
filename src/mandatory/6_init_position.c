@@ -14,12 +14,12 @@
 
 void	find_initial_scale(t_map *map)
 {
-	double	w_scale;
-	double	h_scale;
+	float	w_scale;
+	float	h_scale;
 
 	map->position.scale = 1;
-	w_scale = (double)WIDTH / map->width;
-	h_scale = (double)HEIGHT / map->height;
+	w_scale = (float)WIDTH / map->width;
+	h_scale = (float)HEIGHT / map->height;
 	map->position.scale = h_scale;
 	if (h_scale > w_scale)
 		map->position.scale = w_scale;

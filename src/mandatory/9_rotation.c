@@ -14,8 +14,8 @@
 
 void	rotation_in_x(t_coordinate *point_1, t_coordinate *point_2, t_map *map)
 {
-	double			pi;
-	double			angle;
+	float			pi;
+	float			angle;
 	t_coordinate	aux_point_1;
 	t_coordinate	aux_point_2;
 
@@ -33,8 +33,8 @@ void	rotation_in_x(t_coordinate *point_1, t_coordinate *point_2, t_map *map)
 
 void	rotation_in_y(t_coordinate *point_1, t_coordinate *point_2, t_map *map)
 {
-	double			pi;
-	double			angle;
+	float			pi;
+	float			angle;
 	t_coordinate	aux_point_1;
 	t_coordinate	aux_point_2;
 
@@ -52,8 +52,8 @@ void	rotation_in_y(t_coordinate *point_1, t_coordinate *point_2, t_map *map)
 
 void	rotation_in_z(t_coordinate *point_1, t_coordinate *point_2, t_map *map)
 {
-	double			pi;
-	double			angle;
+	float			pi;
+	float			angle;
 	t_coordinate	aux_point_1;
 	t_coordinate	aux_point_2;
 
@@ -71,8 +71,8 @@ void	rotation_in_z(t_coordinate *point_1, t_coordinate *point_2, t_map *map)
 
 void	oblique(t_coordinate *point_1, t_coordinate *point_2, t_map *map)
 {
-	double			pi;
-	double			angle;
+	float			pi;
+	float			angle;
 	t_coordinate	aux_point_1;
 	t_coordinate	aux_point_2;
 

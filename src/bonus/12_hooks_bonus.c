@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/fdf.h"
+#include "../../include/fdf_bonus.h"
 
 void	rotate(t_map *map)
 {
@@ -20,11 +20,11 @@ void	rotate(t_map *map)
 		map->position.x_angle -= 2;
 	if (mlx_is_key_down(map->mlx, MLX_KEY_W))
 		map->position.y_angle += 2;
-	if (mlx_is_key_down(map->mlx, MLX_KEY_X))
+	if (mlx_is_key_down(map->mlx, MLX_KEY_S))
 		map->position.y_angle -= 2;
-	if (mlx_is_key_down(map->mlx, MLX_KEY_J))
-		map->position.z_angle += 2;
 	if (mlx_is_key_down(map->mlx, MLX_KEY_K))
+		map->position.z_angle += 2;
+	if (mlx_is_key_down(map->mlx, MLX_KEY_J))
 		map->position.z_angle -= 2;
 }
 
@@ -59,13 +59,13 @@ void	translate_zoom_close(t_map *map)
 	if (mlx_is_key_down(map->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(map->mlx);
 	if (mlx_is_key_down(map->mlx, MLX_KEY_UP))
-		map->position.y_offset += 5;
-	if (mlx_is_key_down(map->mlx, MLX_KEY_DOWN))
 		map->position.y_offset -= 5;
+	if (mlx_is_key_down(map->mlx, MLX_KEY_DOWN))
+		map->position.y_offset += 5;
 	if (mlx_is_key_down(map->mlx, MLX_KEY_LEFT))
-		map->position.x_offset += 5;
-	if (mlx_is_key_down(map->mlx, MLX_KEY_RIGHT))
 		map->position.x_offset -= 5;
+	if (mlx_is_key_down(map->mlx, MLX_KEY_RIGHT))
+		map->position.x_offset += 5;
 	if (mlx_is_key_down(map->mlx, MLX_KEY_KP_ADD))
 		map->position.scale *= 1.05;
 	if (mlx_is_key_down(map->mlx, MLX_KEY_KP_SUBTRACT))

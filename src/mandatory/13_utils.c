@@ -14,7 +14,7 @@
 
 void	error(char *err)
 {
-	printf("%s\n", err);
+	ft_printf("%s\n", err);
 	exit(1);
 }
 

@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#ifndef FDF_BONUS_H
+# define FDF_BONUS_H
 
 # define WIDTH 1280
-# define HEIGHT 720	
+# define HEIGHT 720
 
 # ifndef M_PI
 #  define M_PI 3.14159
@@ -36,6 +36,7 @@ typedef struct s_matrix
 
 typedef struct s_position
 {
+	float		initial_scale;
 	float		scale;
 	float		z_factor;
 	int			x_offset;
@@ -114,6 +115,10 @@ void			slope_bigger_equal_1(t_bres *aux, t_coordinate *point,
 void			bresenham(t_coordinate *point_1, t_coordinate *point_2,
 					t_map *map);
 void			ft_hook(void *param);
+void			rotate(t_map *map);
+void			projection(t_map *map);
+void			increase_descrease_z(t_map *map);
+void			translate_zoom_close(t_map *map);
 uint32_t		put_alpha(uint32_t decimal);
 void			error(char *err);
 void			free_matrix(void **matrix);
