@@ -51,7 +51,7 @@ void	check_map(char *map_name, uint32_t width, uint32_t height)
 {
 	int	fd;
 
-	if (height < 2 && width < 2)
+	if (height < 2 || width < 2)
 		error("ERROR: invalid map size.");
 	fd = check_fd(map_name);
 	check_each_line(fd, width, height);

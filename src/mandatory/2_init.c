@@ -16,16 +16,27 @@ void	check_args(int argc, char *map_name)
 {
 	int		fd;
 	char	*extension;
+	char	*gnl_line;
 
 	if (argc != 2)
 		error("ERROR: number of args is invalid.");
 	extension = ft_strrchr(map_name, '.');
+	if (extension == NULL)
+		error("ERROR: argument is invalid.");
+	if (ft_strncmp(extension, ".fdf", 4) != 0)
+		error("ERROR: argument is invalid.");
 	fd = open(map_name, O_RDONLY);
 	if (fd < 0)
 	{
 		close(fd);
 		error("ERROR: file is invalid.");
 	}
+	gnl_line = get_next_line(fd);
+	if (gnl_line == NULL)
+		error("ERROR: empty file.");
+	free(gnl_line);
+	get_next_line(-1);
+	close(fd);
 }
 
 mlx_t	*init_mlx(void)

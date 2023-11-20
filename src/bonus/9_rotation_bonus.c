@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   8_rotation.c                                       :+:      :+:    :+:   */
+/*   9_rotation_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cogata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 13:57:52 by cogata            #+#    #+#             */
-/*   Updated: 2023/11/16 13:57:54 by cogata           ###   ########.fr       */
+/*   Created: 2023/11/20 11:39:32 by cogata            #+#    #+#             */
+/*   Updated: 2023/11/20 11:39:37 by cogata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,15 @@ void	rotation_in_z(t_coordinate *point_1, t_coordinate *point_2, t_map *map)
 	point_2->y = (aux_point_2.x * sin(angle)) + (aux_point_2.y * cos(angle));
 }
 
-void	oblique(t_coordinate *point_1, t_coordinate *point_2, t_map *map)
+void	isometric(t_map *map)
+{
+	map->position.x_angle = 54.73;
+	map->position.y_angle = 0;
+	map->position.z_angle = -45;
+	map->position.projection = '0';
+}
+
+void	oblique(t_coordinate *point_1, t_coordinate *point_2)
 {
 	float			pi;
 	float			angle;
@@ -77,13 +85,13 @@ void	oblique(t_coordinate *point_1, t_coordinate *point_2, t_map *map)
 	t_coordinate	aux_point_2;
 
 	pi = M_PI;
-	angle = map->position.oblique_angle * pi / 180;
+	angle = 45 * pi / 180;
 	aux_point_1.x = point_1->x;
 	aux_point_1.y = point_1->y;
 	aux_point_2.x = point_2->x;
 	aux_point_2.y = point_2->y;
 	point_1->x = aux_point_1.x + (point_1->z * sin(angle));
-	point_1->y = aux_point_1.y - (point_1->z * sin(angle));
+	point_1->y = aux_point_1.y - (point_1->z * cos(angle));
 	point_2->x = aux_point_2.x + (point_2->z * sin(angle));
-	point_2->y = aux_point_2.y - (point_2->z * sin(angle));
+	point_2->y = aux_point_2.y - (point_2->z * cos(angle));
 }

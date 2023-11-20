@@ -1,6 +1,6 @@
 NAME	:= fdf
 NAME_BONUS	:=	fdf_bonus
-CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g3
+CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
 LIBMLX	:= ./lib/MLX42
 LIBFT	:= ./lib/libft
 
@@ -44,6 +44,7 @@ clean:
 
 fclean: clean
 	@rm -rf $(NAME)
+	@rm -rf $(NAME_BONUS)
 	@make -C $(LIBFT) fclean
 
 re: clean all

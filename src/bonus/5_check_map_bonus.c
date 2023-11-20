@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   5_check_map.c                                      :+:      :+:    :+:   */
+/*   5_check_map_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cogata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 14:04:25 by cogata            #+#    #+#             */
-/*   Updated: 2023/11/16 14:04:28 by cogata           ###   ########.fr       */
+/*   Created: 2023/11/20 11:39:10 by cogata            #+#    #+#             */
+/*   Updated: 2023/11/20 11:39:11 by cogata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	check_map(char *map_name, uint32_t width, uint32_t height)
 {
 	int	fd;
 
-	if (height < 2 && width < 2)
+	if (height < 2 || width < 2)
 		error("ERROR: invalid map size.");
 	fd = check_fd(map_name);
 	check_each_line(fd, width, height);

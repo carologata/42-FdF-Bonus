@@ -36,7 +36,6 @@ typedef struct s_matrix
 
 typedef struct s_position
 {
-	float		initial_scale;
 	float		scale;
 	float		z_factor;
 	int			x_offset;
@@ -44,7 +43,7 @@ typedef struct s_position
 	float		x_angle;
 	float		y_angle;
 	float		z_angle;
-	float		oblique_angle;
+	char		projection;
 }				t_position;
 
 typedef struct s_map
@@ -103,8 +102,8 @@ void			rotation_in_y(t_coordinate *point_1, t_coordinate *point_2,
 					t_map *map);
 void			rotation_in_z(t_coordinate *point_1, t_coordinate *point_2,
 					t_map *map);
-void			oblique(t_coordinate *point_1, t_coordinate *point_2,
-					t_map *map);
+void			isometric(t_map *map);
+void			oblique(t_coordinate *point_1, t_coordinate *point_2);
 void			translate(t_coordinate *point_1, t_coordinate *point_2,
 					t_map *map);
 void			put_valid_pixel(t_map *map, int x, int y, uint32_t color);
@@ -119,10 +118,10 @@ void			rotate(t_map *map);
 void			projection(t_map *map);
 void			increase_descrease_z(t_map *map);
 void			translate_zoom_close(t_map *map);
-uint32_t		put_alpha(uint32_t decimal);
 void			error(char *err);
+void			free_and_message(t_map *map, char *str);
 void			free_matrix(void **matrix);
 int				check_fd(char *map_name);
-void			free_and_message(t_map *map, char *str);
+uint32_t		put_alpha(uint32_t decimal);
 
 #endif

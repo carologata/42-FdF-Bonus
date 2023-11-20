@@ -14,7 +14,7 @@
 # define FDF_H
 
 # define WIDTH 1280
-# define HEIGHT 720	
+# define HEIGHT 720
 
 # ifndef M_PI
 #  define M_PI 3.14159
@@ -43,7 +43,6 @@ typedef struct s_position
 	float		x_angle;
 	float		y_angle;
 	float		z_angle;
-	float		oblique_angle;
 }				t_position;
 
 typedef struct s_map
@@ -102,8 +101,6 @@ void			rotation_in_y(t_coordinate *point_1, t_coordinate *point_2,
 					t_map *map);
 void			rotation_in_z(t_coordinate *point_1, t_coordinate *point_2,
 					t_map *map);
-void			oblique(t_coordinate *point_1, t_coordinate *point_2,
-					t_map *map);
 void			translate(t_coordinate *point_1, t_coordinate *point_2,
 					t_map *map);
 void			put_valid_pixel(t_map *map, int x, int y, uint32_t color);
@@ -114,10 +111,10 @@ void			slope_bigger_equal_1(t_bres *aux, t_coordinate *point,
 void			bresenham(t_coordinate *point_1, t_coordinate *point_2,
 					t_map *map);
 void			ft_hook(void *param);
-uint32_t		put_alpha(uint32_t decimal);
 void			error(char *err);
+void			free_and_message(t_map *map, char *str);
 void			free_matrix(void **matrix);
 int				check_fd(char *map_name);
-void			free_and_message(t_map *map, char *str);
+uint32_t		put_alpha(uint32_t decimal);
 
 #endif

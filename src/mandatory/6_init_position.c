@@ -23,8 +23,7 @@ void	find_initial_scale(t_map *map)
 	map->position.scale = h_scale;
 	if (h_scale > w_scale)
 		map->position.scale = w_scale;
-	if (map->position.scale > 10)
-		map->position.scale *= 0.8;
+	map->position.scale *= 0.8;
 }
 
 void	centralize(t_map *map)
@@ -69,22 +68,21 @@ void	find_z_factor(t_map *map)
 		}
 		h++;
 	}
-	if (max_z - min_z > (int)map->height)
+	if (max_z - min_z > 10 * (int)map->height)
+		map->position.z_factor = 0.05;
+	else if (max_z - min_z >= (int)map->height)
 		map->position.z_factor = 0.1;
-	else if (max_z - min_z == (int)map->height)
-		map->position.z_factor = 0.5;
 }
 
 void	init_position(t_map *map)
 {
 	centralize(map);
 	find_initial_scale(map);
-	map->position.z_factor = 1;
+	map->position.z_factor = 0.5;
 	find_z_factor(map);
 	map->position.x_offset = WIDTH / 2;
 	map->position.y_offset = HEIGHT / 2;
 	map->position.z_angle = -45;
 	map->position.x_angle = 54;
 	map->position.y_angle = 0;
-	map->position.oblique_angle = 0;
 }

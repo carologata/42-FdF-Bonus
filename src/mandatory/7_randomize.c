@@ -18,7 +18,6 @@ void	transform(t_coordinate *point_1, t_coordinate *point_2, t_map *map)
 	rotation_in_z(point_1, point_2, map);
 	rotation_in_x(point_1, point_2, map);
 	rotation_in_y(point_1, point_2, map);
-	oblique(point_1, point_2, map);
 	translate(point_1, point_2, map);
 	bresenham(point_1, point_2, map);
 }

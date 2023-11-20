@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   11_hooks.c                                         :+:      :+:    :+:   */
+/*   12_hooks_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cogata <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 13:58:05 by cogata            #+#    #+#             */
-/*   Updated: 2023/11/16 13:58:12 by cogata           ###   ########.fr       */
+/*   Created: 2023/11/20 11:39:56 by cogata            #+#    #+#             */
+/*   Updated: 2023/11/20 11:40:01 by cogata           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,14 @@ void	rotate(t_map *map)
 
 void	projection(t_map *map)
 {
-	if (mlx_is_key_down(map->mlx, MLX_KEY_I))
+	if (mlx_is_key_down(map->mlx, MLX_KEY_KP_1))
+		map->position.projection = '1';
+	if (mlx_is_key_down(map->mlx, MLX_KEY_KP_2))
 	{
-		map->position.x_angle = 54;
-		map->position.y_angle = 0;
-		map->position.z_angle = -45;
-		map->position.oblique_angle = 0;
-	}
-	if (mlx_is_key_down(map->mlx, MLX_KEY_O))
-	{
+		map->position.projection = '2';
 		map->position.x_angle = 0;
 		map->position.y_angle = 0;
 		map->position.z_angle = 0;
-		map->position.oblique_angle = 45;
 	}
 }
 
